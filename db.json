@@ -1,0 +1,26 @@
+{
+  "Contatos": [
+    {
+      "id": "9347",
+      "nome": "kjjhlkjl",
+      "telefone": "6655566565465"
+    }
+  ],
+  "faq": [
+    {
+      "id": "1",
+      "pergunta": "O que é JSON Server?",
+      "resposta": "JSON Server é uma ferramenta que permite ..."
+    },
+    {
+      "id": "2",
+      "pergunta": "Como instalar o JSON Server?",
+      "resposta": "Você pode instalar o JSON Server usando o npm com..."
+    },
+    {
+      "id": "3",
+      "pergunta": "Posso usar JSON Server em produção?",
+      "resposta": "JSON Server é ótimo para desenvolvimento."
+    }
+  ]
+}
