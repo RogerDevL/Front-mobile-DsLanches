@@ -13,7 +13,7 @@ export default function Footer() {
       <TouchableOpacity style={styles.iconButton} onPress={() =>
     navigation.reset({
       index: 0,
-      routes: [{ name: 'Inicial' }],
+      routes: [{ name: 'TelaPedidos' }],
     })
   }
 >

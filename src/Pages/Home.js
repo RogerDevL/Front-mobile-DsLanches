@@ -130,7 +130,7 @@ export default function Home() {
       <View style={styles.produtoContainer}>
         <View style={styles.info}>
           <Text style={styles.titleAdm}>Para editar ou excluir pedidos</Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Contato')}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
         <Text style={styles.buttonText}>Apenas ADM</Text>
       </TouchableOpacity>
         </View>

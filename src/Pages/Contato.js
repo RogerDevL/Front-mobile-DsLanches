@@ -7,11 +7,46 @@ import HeaderForm from '../Components/HeaderForm';
  
 export default function Contato() {
   const navigation = useNavigation();
+  const [nome, setNome] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [pedidos, setPedidos] = useState('');
+  const [quantidade, setQuantidade] = useState('');
+  const [observacao, setObservacao] = useState('');
+
   const enviarPedido = async () => {
-    if (!nome || !telefone || !pedido || !observacao) {
+    if (!nome || !telefone || !pedidos || !quantidade || !observacao) {
       Alert.alert("Erro, por favor preencha todos os campos");  
       return;
     }
+
+
+    try {
+      const response = await fetch('http://10.0.2.2:3000/api/pedidos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({nome, telefone, pedidos, quantidade, observacao}),
+      });
+  
+      if(response.ok){
+        const jsonResponse = await response.json();
+        Alert.alert('Sucessso', 'Pedido sendo preparado...');
+        console.log(jsonResponse)
+        setNome('');
+        setTelefone('');
+        setPedidos('');
+        setQuantidade('');
+        setObservacao('');
+      } else {
+        Alert.alert('Erro', 'Erro ao enviar pedido.');
+      }
+    } catch (error) {
+      Alert.alert('Erro', 'Erro de conexão:' + error.message);
+    }
+
+    
+    
   }
  
   return (
@@ -26,28 +61,45 @@ export default function Contato() {
     <TextInput
     style={styles.input}
     placeholder="Digite o nome"
+    value={nome}
+    onChangeText={setNome}
     />
  
     <Text style={styles.label}>Telefone</Text>
     <TextInput
     style={styles.input}
     placeholder="Digite o telefone"
+    value={telefone}
+    onChangeText={setTelefone}
     />
- 
+
+
+
 <Text style={styles.label}>Pedido</Text>
     <TextInput
     style={styles.input}
     placeholder="Digite seu pedido"
-   
+    value={pedidos}
+    onChangeText={setPedidos}
+    />
+
+<Text style={styles.label}>Quantidade</Text>
+    <TextInput
+    style={styles.input}
+    placeholder="Digite a quantidade"
+    value={quantidade}
+    onChangeText={setQuantidade}
     />
  
 <Text style={styles.label}>Observação</Text>
     <TextInput
     style={styles.input}
     placeholder="Digite seu pedido"
+    value={observacao}
+    onChangeText={setObservacao}
     />
  
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={enviarPedido}>
         <Text style={styles.buttonText}>Enviar Pedido</Text>
       </TouchableOpacity>
 
