@@ -1,122 +1,92 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // Você pode usar 'react-native-vector-icons' para ícones
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import HeaderForm from '../Components/HeaderForm';
+import { useNavigation } from '@react-navigation/native';
+import TelaAdm from './TelaAdm';
+ 
+export default function Login() {
+    const navigation = useNavigation();
 
-export default function PedidosClientes() {
     return (
-      <View>
-        <HeaderForm />
-        <ScrollView>
-        <View style={styles.container}>
-            {/* Card de Pedido 1 */}
-            <View style={styles.orderItem}>
-                <FontAwesome name="user-circle-o" size={40} color="#000" style={styles.icon} />
-                <View style={styles.clientDetails}>
-                    <Text style={styles.name}>Fulano D Silva</Text>
-                    <Text style={styles.phone}>(11) 999999999</Text>
-                </View>
-                <View style={styles.orderInfo}>
-                    <Text style={styles.orderNumber}>Pedido: 1</Text>
-                    <View style={styles.buttonsContainer}>
-                        <TouchableOpacity style={styles.editButton}>
-                            <Text style={styles.buttonText}>Editar</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.deleteButton}>
-                            <Text style={styles.buttonText}>Excluir</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+        <View>
+            <HeaderForm />
+            <ScrollView>
+            <View style={styles.container}>
+            <View style={styles.formContainer}>
+                <Text style={styles.label}>Nome</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Digite seu nome"
+                   
+                />
+                <Text style={styles.label}>Senha</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Digite sua senha"
+                    secureTextEntry
+                  
+                />
             </View>
-
-            {/* Card de Pedido 2 */}
-            <View style={styles.orderItem}>
-                <FontAwesome name="user-circle-o" size={40} color="#000" style={styles.icon} />
-                <View style={styles.clientDetails}>
-                    <Text style={styles.name}>Ciclano de Souza</Text>
-                    <Text style={styles.phone}>(11) 988888888</Text>
-                </View>
-                <View style={styles.orderInfo}>
-                    <Text style={styles.orderNumber}>Pedido: 2</Text>
-                    <View style={styles.buttonsContainer}>
-                        <TouchableOpacity style={styles.editButton}>
-                            <Text style={styles.buttonText}>Editar</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.deleteButton}>
-                            <Text style={styles.buttonText}>Excluir</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </View>
+ 
+            {/* Continue Button */}
+            <TouchableOpacity style={styles.continueButton} onPress={() => navigation.navigate('TelaAdm')}>
+                <Text style={styles.continueButtonText}>LOGIN ADM</Text>
+            </TouchableOpacity>
         </View>
-        </ScrollView>
-
-      </View>
-        
+            </ScrollView>
+             
+        </View>
+       
     );
 }
-
+ 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
         backgroundColor: '#fff',
     },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    backArrow: {
+        fontSize: 24,
+        marginRight: 10,
+    },
     screenTitle: {
         fontSize: 24,
         fontWeight: 'bold',
     },
-    orderItem: {
-        flexDirection: 'row',
+    formContainer: {
         backgroundColor: '#FFE0B2',
+        padding: 20,
         borderRadius: 10,
-        padding: 15,
-        marginBottom: 10,
-        alignItems: 'center',
+        marginBottom: 20,
     },
-    icon: {
-        marginRight: 10,
-    },
-    clientDetails: {
-        flex: 1,
-    },
-    name: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginBottom: 5,
-    },
-    phone: {
+    label: {
         fontSize: 14,
+        marginBottom: 5,
         color: '#555',
     },
-    orderInfo: {
-        alignItems: 'flex-end',
-    },
-    orderNumber: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-    buttonsContainer: {
-        flexDirection: 'row',
-        marginTop: 5,
-    },
-    editButton: {
-        backgroundColor: '#4CAF50',
-        paddingVertical: 5,
-        paddingHorizontal: 10,
+    input: {
+        backgroundColor: '#fff',
         borderRadius: 5,
-        marginRight: 5,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        marginBottom: 15,
     },
-    deleteButton: {
-        backgroundColor: '#F44336',
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        borderRadius: 5,
+    continueButton: {
+        backgroundColor: '#F57C00',
+        paddingVertical: 15,
+        borderRadius: 10,
+        alignItems: 'center',
     },
-    buttonText: {
+    continueButtonText: {
         color: '#fff',
-        fontSize: 12,
         fontWeight: 'bold',
+        fontSize: 16,
     },
 });
