@@ -59,7 +59,7 @@ export default function Home() {
           style={styles.image}
         />
         <View style={styles.info}>
-          <Text style={styles.title}>Pizza de frango</Text>
+          <Text style={styles.title}>Pizza de frango-93</Text>
           <Text style={styles.description}>
             Ingredientes:Lorem, ipsum, dolor, sed, reprehenderit asperiores
             eos sapiente...
@@ -74,7 +74,7 @@ export default function Home() {
           style={styles.image}
         />
         <View style={styles.info}>
-          <Text style={styles.title}>Hot Dog Master</Text>
+          <Text style={styles.title}>Hot Dog Master-147</Text>
           <Text style={styles.description}>
             Ingredientes:Lorem, ipsum, dolor, sed, reprehenderit asperiores
             eos sapiente...
@@ -89,7 +89,7 @@ export default function Home() {
           style={styles.image}
         />
         <View style={styles.info}>
-          <Text style={styles.title}>PODRAO</Text>
+          <Text style={styles.title}>PODRAO-130</Text>
           <Text style={styles.description}>
             Ingredientes:Lorem, ipsum, dolor, sed, reprehenderit asperiores
             eos sapiente...
@@ -104,7 +104,7 @@ export default function Home() {
           style={styles.image}
         />
         <View style={styles.info}>
-          <Text style={styles.title}>TAQUITO</Text>
+          <Text style={styles.title}>TAQUITO-125</Text>
           <Text style={styles.description}>
             Ingredientes:Lorem, ipsum, dolor, sed, reprehenderit asperiores
             eos sapiente...
@@ -118,7 +118,7 @@ export default function Home() {
           style={styles.image}
         />
         <View style={styles.info}>
-          <Text style={styles.title}>SALAME CREMOSO</Text>
+          <Text style={styles.title}>SALAME CREMOSO-117</Text>
           <Text style={styles.description}>
             Ingredientes:Lorem, ipsum, dolor, sed, reprehenderit asperiores
             eos sapiente...

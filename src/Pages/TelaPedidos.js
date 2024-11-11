@@ -10,16 +10,11 @@ export default function TelaPedidos() {
     await axios
       .get("http://10.92.198.22:3000/api/pedidos/")
       .then((resposta) => {
-        console.log("passou aqui");
-
-        console.log(resposta);
         setPedidos(resposta.data.pedido);
       })
       .catch((error) => {
         if (error.status == 404) {
-            
         } else {
-          console.log("Erro ao buscar pedidos", error);
           Alert.alert("Erro");
         }
       });

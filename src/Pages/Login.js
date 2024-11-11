@@ -1,11 +1,41 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import HeaderForm from '../Components/HeaderForm';
 import { useNavigation } from '@react-navigation/native';
 import TelaAdm from './TelaAdm';
+import axios from 'axios';
  
 export default function Login() {
     const navigation = useNavigation();
+    const [nome, setNome] = useState('');
+    const [senha, setSenha] = useState('');
+
+    const fazerLogin = async () =>{
+
+        try {
+            const response = await axios.post("http://10.92.198.22:3000/api/admin/login", {
+                nome: nome,
+                senha: senha
+            });
+
+            if (response.status === 200) {
+                Alert.alert('Login bem-sucedido!', `Bem-vindo, ${nome}`);
+                navigation.navigate('TelaAdm')
+              } else {
+                Alert.alert('Erro', response.data.message || 'Erro ao fazer login');
+              }
+
+
+        } catch (error) {
+            console.log('Erro ao fazer login.', error)
+            Alert.alert('Erro ao fazer login.')
+        }
+    }
+
+
+
+
+   
 
     return (
         <View>
@@ -17,6 +47,8 @@ export default function Login() {
                 <TextInput
                     style={styles.input}
                     placeholder="Digite seu nome"
+                    value={nome}
+                    onChangeText={setNome}
                    
                 />
                 <Text style={styles.label}>Senha</Text>
@@ -24,12 +56,14 @@ export default function Login() {
                     style={styles.input}
                     placeholder="Digite sua senha"
                     secureTextEntry
+                    value={senha}
+                    onChangeText={setSenha}
                   
                 />
             </View>
  
             {/* Continue Button */}
-            <TouchableOpacity style={styles.continueButton} onPress={() => navigation.navigate('TelaAdm')}>
+            <TouchableOpacity style={styles.continueButton} onPress={fazerLogin}>
                 <Text style={styles.continueButtonText}>LOGIN ADM</Text>
             </TouchableOpacity>
         </View>

@@ -7,6 +7,7 @@ import Inicial from './src/Pages/Inicial';
 import Login from './src/Pages/Login';
 import TelaAdm from './src/Pages/TelaAdm';
 import TelaPedidos from './src/Pages/TelaPedidos';
+import Editar from './src/Pages/Editar';
  
  
  
@@ -22,6 +23,8 @@ export default function MainNavigator() {
             <Stack.Screen name='Login' component={Login} options={{headerShown:false}} />
             <Stack.Screen name='TelaAdm' component={TelaAdm} options={{headerShown:false}} />
             <Stack.Screen name='TelaPedidos' component={TelaPedidos} options={{headerShown:false}} />
+            <Stack.Screen name='TelaEditar' component={Editar} options={{headerShown:false}} />
+            
         </Stack.Navigator>
     </NavigationContainer>
    

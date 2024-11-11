@@ -17,7 +17,7 @@ export default function Footer() {
     })
   }
 >
-            <Ionicons name="information-circle-outline" size={26} color="black" />
+            <Ionicons name="list-outline" size={26} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconButton} onPress={()=>navigation.navigate("Inicial")}>
             <Ionicons name="home-outline" size={26} color="black" />

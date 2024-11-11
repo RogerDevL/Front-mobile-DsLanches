@@ -1,109 +1,131 @@
-import React from 'react';
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // Você pode usar 'react-native-vector-icons' para ícones
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import HeaderForm from '../Components/HeaderForm';
+import axios from 'axios';
 
 export default function TelaAdm() {
-    return (
-        <View>
-        <HeaderForm />
-        <ScrollView>
-            <View style={styles.container}>
-                {/* Card de Pedido 1 */}
-                <View style={styles.orderItem}>
-                    <FontAwesome name="user-circle-o" size={40} color="#000" style={styles.icon} />
-                    <View style={styles.clientDetails}>
-                        <Text style={styles.name}>Fulano D Silva</Text>
-                        <Text style={styles.phone}>(11) 999999999</Text>
-                    </View>
-                    <View style={styles.orderInfo}>
-                        <Text style={styles.orderNumber}>Pedido: 1</Text>
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.button} onPress={() => handleEdit(1)}>
-                                <Text style={styles.buttonText}>Editar</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.button} onPress={() => handleDelete(1)}>
-                                <Text style={styles.buttonText}>Excluir</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
+    const navigation = useNavigation();
+    const [pedidos, setPedidos] = useState([]);
 
-                {/* Card de Pedido 2 */}
-                <View style={styles.orderItem}>
-                    <FontAwesome name="user-circle-o" size={40} color="#000" style={styles.icon} />
-                    <View style={styles.clientDetails}>
-                        <Text style={styles.name}>Ciclano de Souza</Text>
-                        <Text style={styles.phone}>(11) 988888888</Text>
-                    </View>
-                    <View style={styles.orderInfo}>
-                        <Text style={styles.orderNumber}>Pedido: 2</Text>
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.buttonText}>Editar</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.buttonText}>Excluir</Text>
-                            </TouchableOpacity>
+    const listaPedidos = async () => {
+        await axios
+            .get("http://10.92.198.22:3000/api/pedidos/")
+            .then((resposta) => {
+                setPedidos(resposta.data.pedido);
+            })
+            .catch((error) => {
+                if (error.response && error.response.status === 404) {
+                    Alert.alert("Nenhum pedido encontrado");
+                } else {
+                    Alert.alert("Erro ao carregar pedidos");
+                }
+            });
+    };
+
+    useEffect(() => {
+        listaPedidos();
+    }, []);
+
+   const deletarPedido = async (id) => {
+
+    try {
+        await 
+        axios.delete(`http://10.92.198.22:3000/api/pedidos/${id}`)
+        .then(() => {
+            setPedidos(pedidos.filter((pedido)=> pedido.id !== id))
+        })
+        Alert.alert('Pedido deletado com sucesso!')
+    } catch (error) {
+        console.error('Erro ao excluir', error);
+        Alert.alert('Erro, não foi possível excluir.')
+    }
+
+}
+
+    return (
+        <View style={styles.container}>
+            <HeaderForm />
+            <ScrollView>
+                {pedidos.length > 0 ? (
+                    pedidos.map((pedido) => (
+                        <View key={pedido.id} style={styles.pedidoItem}>
+                            <View style={styles.pedidoInfo}>
+                                <Text style={styles.h2}>{pedido.pedidos} || Pedido de número: {pedido.id}</Text>
+                                <Text style={styles.h2}>{pedido.nome}</Text>
+                                <Text style={styles.p}>Observação: {pedido.observacao}</Text>
+                            </View>
+                            <View style={styles.quantidade}>
+                                <Text>Quantidade: {pedido.quantidade}</Text>
+                            </View>
+                            <View style={styles.buttonContainer}>
+                                <TouchableOpacity style={styles.buttonEditar} onPress={() => navigation.navigate('TelaEditar') }>
+                                    <Text style={styles.buttonText}>Editar</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.button} onPress={() => deletarPedido(pedido.id)}>
+                                    <Text style={styles.buttonText}>Excluir</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
-                </View>
-            </View>
-        </ScrollView>
-    </View>
-);
+                    ))
+                ) : (
+                    <Text>Nenhum disponível</Text>
+                )}
+            </ScrollView>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-},
-orderItem: {
-    flexDirection: 'row',
-    backgroundColor: '#FFE0B2',
-    borderRadius: 10,
-    padding: 15,
-    marginBottom: 10,
-    alignItems: 'center',
-},
-icon: {
-    marginRight: 10,
-},
-clientDetails: {
-    flex: 1,
-},
-name: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-},
-phone: {
-    fontSize: 14,
-    color: '#555',
-},
-orderInfo: {
-    alignItems: 'flex-end',
-},
-orderNumber: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginBottom: 10,
-},
-buttonContainer: {
-    flexDirection: 'row',
-    marginTop: 10,
-},
-button: {
-    backgroundColor: '#007BFF',
-    borderRadius: 5,
-    padding: 10,
-    marginLeft: 5,
-},
-buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-},
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+    },
+    pedidoItem: {
+        marginBottom: 15, // Adiciona espaço entre os pedidos
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: "#ddd",
+    },
+    pedidoInfo: {
+        marginBottom: 10, // Espaço entre as informações do pedido e a quantidade
+    },
+    h2: {
+        fontSize: 16,
+        fontWeight: "bold",
+        marginBottom: 5,
+    },
+    p: {
+        fontSize: 14,
+        color: "#333",
+    },
+    quantidade: {
+        fontSize: 14,
+        marginBottom:10
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between', // Para distribuir os botões
+    },
+    button: {
+        backgroundColor: 'red',
+        borderRadius: 5,
+        padding: 10,
+        height: 50,
+        flex: 1, // Para que os botões ocupem espaço igual
+        marginHorizontal: 5, // Espaço entre os botões
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        textAlign: 'center', // Centraliza o texto no botão
+    },
+    buttonEditar: {
+        backgroundColor: 'orange',
+        borderRadius: 5,
+        padding: 10,
+        height: 50,
+        flex: 1, // Para que os botões ocupem espaço igual
+        marginHorizontal: 5, // Espaço entre os botões
+    },
 });
