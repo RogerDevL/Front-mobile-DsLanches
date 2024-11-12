@@ -17,23 +17,23 @@ const HeaderForm = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'orange', // Cor de fundo do cabeçalho
+    backgroundColor: 'orange', 
     paddingTop:50,
-    flexDirection: 'row', // Alinhe os elementos em uma linha
+    flexDirection: 'row', 
     alignItems: 'center',
     height:120, 
-    display:'flex',// Centralize os elementos verticalmente
+    display:'flex',
     justifyContent:'space-evenly'
   },
   backButton: {
     marginRight: 10,
-    marginLeft:-95 // Espaçamento entre o botão e o título
+    marginLeft:-95 
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
-    marginRight:25 // Cor do texto do título
+    marginRight:25 
   },
 });
 

@@ -11,6 +11,10 @@ export default function Inicial() {
         source={require('../../assets/primeiro.png')} 
         style={styles.backgroundImage}
       />
+
+      <Text style={styles.welcomeText}>
+        Bem-vindo ao DS'Lanches! 
+      </Text>
       
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.buttonText}>Continue</Text>
@@ -21,31 +25,41 @@ export default function Inicial() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Faz com que o container ocupe toda a tela
+    flex: 1, 
   },
   backgroundImage: {
-    position: 'absolute', // A imagem será posicionada de forma absoluta
+    position: 'absolute', 
     top: 0,
     left: -80,
     right: 0,
     bottom: 0,
-    width: '121%', // Largura total
-    height: '101%', // Altura total
-    resizeMode: 'cover', // Ajusta a imagem para cobrir a tela
+    width: '121%', 
+    height: '101%', 
+    resizeMode: 'cover', 
   },
   button: {
-    backgroundColor: 'orange', // Cor de fundo laranja
-    padding: 15, // Espaçamento interno
-    borderRadius: 5, // Bordas arredondadas
-    position: 'absolute', // Posiciona o botão
-    bottom: 400, // Distância do fundo da tela (ajuste conforme necessário)
-    left: '50%', // Centraliza horizontalmente
+    backgroundColor: 'orange', 
+    padding: 15, 
+    borderRadius: 5, 
+    position: 'absolute', 
+    bottom: 400, 
+    left: '50%', 
     transform: [{ translateX: -75 }],
-    width:150 // Ajusta para centralizar corretamente (75 é metade da largura do botão)
+    width:150 
   },
   buttonText: {
-    color: 'white', // Cor do texto do botão
-    textAlign: 'center', // Centraliza o texto
-    fontWeight: 'bold', // Negrito
+    color: 'white', 
+    textAlign: 'center', 
+    fontWeight: 'bold',
+  },
+  welcomeText: {
+    position: 'absolute', 
+    top: 200, 
+    left: '42%',
+    transform: [{ translateX: -75 }], 
+    color: 'orange', 
+    fontSize: 20,
+    textAlign: 'center', 
+    marginBottom: 20, 
   },
 });

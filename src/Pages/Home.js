@@ -22,14 +22,14 @@ export default function Home() {
     
     <View style={styles.contentContainer}>
       <View style={styles.container}>
-        {/* Header */}
+
         <View style={styles.header}>
          
           <Text style={styles.title}>Bem-vindo DS'Lanches!</Text>
         
         </View> 
 
-        {/* Search Bar */}
+       
         <View style={styles.searchContainer}>
           <FontAwesome
             name="search"
@@ -44,7 +44,7 @@ export default function Home() {
           />
         </View>
 
-        {/* Categories */}
+  
         <View style={styles.categoriesContainer}>
           <CategoryIcon name="fastfood" />
           <CategoryIcon name="local-pizza" />
@@ -55,7 +55,7 @@ export default function Home() {
 
       <View style={styles.produtoContainer}>
         <Image
-          source={require("../../assets/chicken-pizza-with-tomatoes-ranch-sauce.jpg")} // Replace with your image path
+          source={require("../../assets/chicken-pizza-with-tomatoes-ranch-sauce.jpg")} 
           style={styles.image}
         />
         <View style={styles.info}>
@@ -70,7 +70,7 @@ export default function Home() {
 
       <View style={styles.produtoContainer}>
         <Image
-          source={require("../../assets/delicious-hot-dog-with-sauce.jpg")} // Replace with your image path
+          source={require("../../assets/delicious-hot-dog-with-sauce.jpg")} 
           style={styles.image}
         />
         <View style={styles.info}>
@@ -85,7 +85,7 @@ export default function Home() {
 
       <View style={styles.produtoContainer}>
         <Image
-          source={require("../../assets/still-life-delicious-american-hamburger22.jpg")} // Replace with your image path
+          source={require("../../assets/still-life-delicious-american-hamburger22.jpg")} 
           style={styles.image}
         />
         <View style={styles.info}>
@@ -100,7 +100,7 @@ export default function Home() {
 
       <View style={styles.produtoContainer}>
         <Image
-          source={require("../../assets/taco-ingredients-unwrapped-tortilla.jpg")} // Replace with your image path
+          source={require("../../assets/taco-ingredients-unwrapped-tortilla.jpg")}
           style={styles.image}
         />
         <View style={styles.info}>
@@ -114,7 +114,7 @@ export default function Home() {
       </View>
       <View style={styles.produtoContainer}>
         <Image
-          source={require("../../assets/pizza-pizza-filled-with-tomatoes-salami-olives.jpg")} // Replace with your image path
+          source={require("../../assets/pizza-pizza-filled-with-tomatoes-salami-olives.jpg")} 
           style={styles.image}
         />
         <View style={styles.info}>
@@ -162,19 +162,19 @@ const styles = StyleSheet.create({
     textAlign:'center'
   },
   button: {
-    backgroundColor: 'orange', // Cor de fundo laranja
-    padding: 9, // Espaçamento interno
-    borderRadius: 5, // Bordas arredondadas
-    left: '50%', // Centraliza horizontalmente
+    backgroundColor: 'orange', 
+    padding: 9, 
+    borderRadius: 5, 
+    left: '50%', 
     transform: [{ translateX: -75 }],
-    width:150 // Ajusta para centralizar corretamente (75 é metade da largura do botão)
+    width:150
   },
   buttonText: {
     display:'flex',
     justifyContent:'center',
-    color: 'white', // Cor do texto do botão
-    textAlign: 'center', // Centraliza o texto
-    fontWeight: 'bold', // Negrito
+    color: 'white', 
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   containerOne:{
     flex:1
@@ -217,20 +217,20 @@ searchInput: {
 },
 categoriesContainer: {
     flexDirection: 'row',
-    justifyContent: 'center', // Centraliza os ícones horizontalmente
-    alignItems: 'center', // Centraliza os ícones verticalmente
+    justifyContent: 'center', 
+    alignItems: 'center', 
     marginTop: 20,
 },
 category: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FFE5CC',
-    width: 70,  // Define a largura para criar um círculo
-    height: 70, // Define a altura para criar um círculo
-    borderRadius: 35, // Metade do tamanho para um círculo perfeito
+    width: 70,  
+    height: 70, 
+    borderRadius: 35, 
     padding: 10,
     marginBottom: 10,
-    marginHorizontal: 10, // Espaçamento horizontal entre os ícones
+    marginHorizontal: 10, 
 },
 categoryLabel: {
     marginTop: 5,
@@ -242,13 +242,13 @@ categoryLabel: {
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    zIndex: 1, // Garante que o conteúdo fique acima da imagem
+    zIndex: 1, 
   },
   tituloContato: {
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
-    color: "white", // Altere a cor do texto se necessário
+    color: "white", 
   },
   tituloInfo: {
     fontSize: 18,
@@ -260,10 +260,10 @@ categoryLabel: {
   
   icon: {
     position: "absolute",
-    left: 10, // Distância do lado esquerdo da barra de pesquisa
-    top: "50%", // Centraliza verticalmente
-    transform: [{ translateY: -12 }], // Ajusta a posição vertical do ícone
-    width: 24, // Ajuste o tamanho do ícone conforme necessário
+    left: 10, 
+    top: "50%", 
+    transform: [{ translateY: -12 }], 
+    width: 24, 
     height: 24,
   },
   produtoContainer: {
@@ -273,7 +273,7 @@ categoryLabel: {
     width: 300,
     margin: 10,
     backgroundColor: "#FFF3E5",
-    borderWidth: 2, // Adjust the border width as needed
+    borderWidth: 2, 
     borderColor: "orange",
   },
   image: {

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         width: 300,
         margin: 10,
         backgroundColor: "#FFF3E5",
-        borderWidth: 2, // Adjust the border width as needed
+        borderWidth: 2, 
         borderColor: "orange",
     },
     cardContent:{

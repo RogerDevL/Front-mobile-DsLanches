@@ -19,7 +19,7 @@ export default function Contato() {
     }
 
     try {
-      const response = await axios.post('http://10.0.2.2:3000/api/pedidos', {
+       await axios.post('http://10.0.2.2:3000/api/pedidos', {
         nome,
         telefone,
         pedidos,
@@ -31,17 +31,16 @@ export default function Contato() {
         },
       });
 
-      // O axios já transforma a resposta em JSON, então não precisamos chamar response.json()
+     
       Alert.alert('Sucesso', 'Pedido sendo preparado...');
-      console.log(response.data); // A resposta já está em JSON
-      // Limpa os campos após o envio
       setNome('');
       setTelefone('');
       setPedidos('');
       setQuantidade('');
       setObservacao('');
+      navigation.navigate('Home');
     } catch (error) {
-      // Verifica se o erro é de resposta do servidor
+      
       if (error.response) {
         Alert.alert('Erro', 'Erro ao enviar pedido: ' + error.response.data.message);
       } else {
@@ -119,18 +118,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   button: {
-    backgroundColor: 'orange', // Cor de fundo laranja
-    padding: 15, // Espaçamento interno
-    borderRadius: 5, // Bordas arredondadas
-    left: '50%', // Centraliza horizontalmente
+    backgroundColor: 'orange', 
+    padding: 15, 
+    borderRadius: 5, 
+    left: '50%',
     transform: [{ translateX: -75 }],
-    width: 150, // Ajusta para centralizar corretamente (75 é metade da largura do botão)
+    width: 150, 
     marginTop: 10,
   },
   buttonText: {
-    color: 'white', // Cor do texto do botão
-    textAlign: 'center', // Centraliza o texto
-    fontWeight: 'bold', // Negrito
+    color: 'white', 
+    textAlign: 'center',
+    fontWeight: 'bold', 
   },
   goBack: {
     paddingBottom: 20,

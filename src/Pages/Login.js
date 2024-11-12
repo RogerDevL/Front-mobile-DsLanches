@@ -62,7 +62,6 @@ export default function Login() {
                 />
             </View>
  
-            {/* Continue Button */}
             <TouchableOpacity style={styles.continueButton} onPress={fazerLogin}>
                 <Text style={styles.continueButtonText}>LOGIN ADM</Text>
             </TouchableOpacity>

@@ -59,7 +59,7 @@ export default function TelaAdm() {
                                 <Text>Quantidade: {pedido.quantidade}</Text>
                             </View>
                             <View style={styles.buttonContainer}>
-                                <TouchableOpacity style={styles.buttonEditar} onPress={() => navigation.navigate('TelaEditar') }>
+                                <TouchableOpacity style={styles.buttonEditar} onPress={() => navigation.navigate('TelaEditar', {id:pedido.id}) }>
                                     <Text style={styles.buttonText}>Editar</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.button} onPress={() => deletarPedido(pedido.id)}>
@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
     },
     pedidoItem: {
-        marginBottom: 15, // Adiciona espaço entre os pedidos
+        marginBottom: 15, 
         padding: 10,
         borderBottomWidth: 1,
         borderBottomColor: "#ddd",
     },
     pedidoInfo: {
-        marginBottom: 10, // Espaço entre as informações do pedido e a quantidade
+        marginBottom: 10, 
     },
     h2: {
         fontSize: 16,
@@ -105,27 +105,27 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between', // Para distribuir os botões
+        justifyContent: 'space-between', 
     },
     button: {
         backgroundColor: 'red',
         borderRadius: 5,
         padding: 10,
         height: 50,
-        flex: 1, // Para que os botões ocupem espaço igual
-        marginHorizontal: 5, // Espaço entre os botões
+        flex: 1,
+        marginHorizontal: 5, 
     },
     buttonText: {
         color: '#fff',
         fontWeight: 'bold',
-        textAlign: 'center', // Centraliza o texto no botão
+        textAlign: 'center', 
     },
     buttonEditar: {
         backgroundColor: 'orange',
         borderRadius: 5,
         padding: 10,
         height: 50,
-        flex: 1, // Para que os botões ocupem espaço igual
-        marginHorizontal: 5, // Espaço entre os botões
+        flex: 1, 
+        marginHorizontal: 5, 
     },
 });

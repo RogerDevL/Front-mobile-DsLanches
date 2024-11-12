@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
-    elevation: 5, // Para Android
+    elevation: 5, 
   },
   header: {
     flexDirection: "row",
